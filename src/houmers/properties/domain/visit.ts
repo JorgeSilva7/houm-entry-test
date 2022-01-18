@@ -3,7 +3,8 @@ import Property from "./property";
 
 class Visit {
 	private _property: Property;
-	private _date: Date;
+	private _start_date: Date;
+	private _end_date: Date;
 	private _houmer: Houmer;
 
 	public get property(): Property {
@@ -14,12 +15,20 @@ class Visit {
 		this._property = property;
 	}
 
-	public get date(): Date {
-		return this._date;
+	public get start_date(): Date {
+		return this._start_date;
 	}
 
-	public set date(date: Date) {
-		this._date = date;
+	public set start_date(start_date: Date) {
+		this._start_date = start_date;
+	}
+
+	public get end_date(): Date {
+		return this._end_date;
+	}
+
+	public set end_date(end_date: Date) {
+		this._end_date = end_date;
 	}
 
 	public get houmer(): Houmer {

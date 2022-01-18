@@ -1,5 +1,4 @@
 import Coordinates from "../../shared/domain/Coordinates";
-import Houmer from "./houmer";
 import Property from "./property";
 
 class Move {
@@ -7,7 +6,7 @@ class Move {
 	private _property_destination: Property;
 	private _start_date: Date;
 	private _end_date: Date;
-	private _houmer: Houmer;
+	private _houmer_id: string;
 
 	public get start_coordinates(): Coordinates {
 		return this._start_coordinates;
@@ -41,12 +40,12 @@ class Move {
 		this._end_date = end_date;
 	}
 
-	public get houmer(): Houmer {
-		return this._houmer;
+	public get houmer_id(): string {
+		return this._houmer_id;
 	}
 
-	public set houmer(houmer: Houmer) {
-		this._houmer = houmer;
+	public set houmer_id(houmer_id: string) {
+		this._houmer_id = houmer_id;
 	}
 }
 

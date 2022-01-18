@@ -1,7 +1,9 @@
 import Alphanumeric from "../../shared/domain/Alphanumeric";
 import Name from "../../shared/domain/Name";
+import bcrypt from "bcrypt";
 
 class Houmer {
+	public _id: any;
 	private _name: Name;
 	private _lastName: Name;
 	private _token: string;
