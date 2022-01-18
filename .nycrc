@@ -1,0 +1,14 @@
+{
+	"include": "src/*",
+	"exclude": [
+		"src/index.ts",
+		"src/shared/*"
+	],
+	"all": true,
+	"reporter": [
+		"lcov",
+		"text"
+	],
+	"check-coverage": true,
+	"lines": 80
+}

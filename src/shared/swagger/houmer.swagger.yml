@@ -1,0 +1,28 @@
+Houmer:
+  name: Houmer
+  description: Houmer endpoints
+
+components:
+  schemas:
+    Houmer:
+      type: object
+      properties:
+
+/Houmers:
+  post:
+    tags:
+      - Houmer
+    description: Houmer
+    summary: "Houmer"
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    parameters:
+      - in: body
+        name: name
+        schema:
+          type: string
+          example: "name"
+        required: true
+        description: name
