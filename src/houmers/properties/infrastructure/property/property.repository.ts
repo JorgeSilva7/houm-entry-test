@@ -7,26 +7,29 @@
  */
 
 import IPropertyRepository from "../../domain/repository/iproperty.repository";
-import Coordinates from "../../../shared/domain/Coordinates";
 import Property from "../../domain/property";
 import PropertySchema from "./property.schema";
 import ApiException from "../../../../shared/exceptions/api.exception";
-import Alphanumeric from "../../../shared/domain/Alphanumeric";
-import { Types } from "mongoose";
 
 class PropertyRepository implements IPropertyRepository {
-	create(
-		name: Alphanumeric,
-		coordinates: Coordinates,
-		houmer_id: string
-	): Promise<boolean | Error> {
+	getById(id: string): Promise<Property | Error> {
+		return PropertySchema.findById(id)
+			.then(async (res) => {
+				return res;
+			})
+			.catch((err) => {
+				return new ApiException(404, err);
+			});
+	}
+
+	create(property: Property): Promise<boolean | Error> {
 		return PropertySchema.create({
-			name: name.value,
+			name: property.name.value,
 			coordinates: {
-				latitude: coordinates.latitude.value,
-				longitude: coordinates.longitude.value,
+				latitude: property.coordinates.latitude.value,
+				longitude: property.coordinates.longitude.value,
 			},
-			houmer_id: houmer_id,
+			houmer_id: property.houmer_id,
 		})
 			.then((_res) => {
 				return true;

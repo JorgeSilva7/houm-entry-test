@@ -1,10 +1,9 @@
 import ApiException from "../../../shared/exceptions/api.exception";
-import Name from "../../shared/domain/Name";
 import Coordinates from "../../shared/domain/Coordinates";
 
 import IPropertyRepository from "../domain/repository/iproperty.repository";
-import Property from "../domain/property";
 import Alphanumeric from "../../shared/domain/Alphanumeric";
+import Property from "../domain/property";
 
 class PropertyUseCases {
 	propertyRepository: IPropertyRepository;
@@ -26,7 +25,12 @@ class PropertyUseCases {
 				body.coordinates.longitude
 			);
 
-			return await this.propertyRepository.create(name, coordinates, houmer_id);
+			const property = new Property();
+			property.coordinates = coordinates;
+			property.name = name;
+			property.houmer_id = houmer_id;
+
+			return await this.propertyRepository.create(property);
 		} catch (err) {
 			return new ApiException(400, err);
 		}

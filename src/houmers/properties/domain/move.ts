@@ -2,6 +2,7 @@ import Coordinates from "../../shared/domain/Coordinates";
 import Property from "./property";
 
 class Move {
+	public _id: any;
 	private _start_coordinates: Coordinates;
 	private _property_destination: Property;
 	private _start_date: Date;

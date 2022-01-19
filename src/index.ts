@@ -11,6 +11,7 @@ import DatabaseConnection from "./shared/databases.connection";
 
 import AuthRouter from "./houmers/properties/infrastructure/auth/auth.router";
 import PropertyRouter from "./houmers/properties/infrastructure/property/property.router";
+import VisitRouter from "./houmers/properties/infrastructure/visit/visit.router";
 
 async function init() {
 	const databaseConnection = new DatabaseConnection();
@@ -18,7 +19,10 @@ async function init() {
 		.mongooseDB()
 		.then(() => {
 			// Create new App with array of routes Routes instances and port to listen
-			const app = new App([new AuthRouter(), new PropertyRouter()], PORT);
+			const app = new App(
+				[new AuthRouter(), new PropertyRouter(), new VisitRouter()],
+				PORT
+			);
 
 			//Start express app
 			app.listen();

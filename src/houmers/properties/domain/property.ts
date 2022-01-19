@@ -2,6 +2,7 @@ import Coordinates from "../../shared/domain/Coordinates";
 import Alphanumeric from "../../shared/domain/Alphanumeric";
 
 class Property {
+	public _id: any;
 	private _name: Alphanumeric;
 	private _coordinates: Coordinates;
 	private _houmer_id: string;

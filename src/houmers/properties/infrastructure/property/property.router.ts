@@ -9,7 +9,7 @@ import express from "express";
 import AuthMiddleware from "../../../../shared/middlewares/auth.middleware";
 import PropertyController from "./property.controller";
 
-class AuthRouter {
+class PropertyRouter {
 	public path = "/properties";
 	public router = express.Router();
 	private propertyController: PropertyController;
@@ -30,4 +30,4 @@ class AuthRouter {
 	}
 }
 
-export default AuthRouter;
+export default PropertyRouter;

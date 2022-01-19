@@ -13,7 +13,6 @@
 import { NextFunction, Request, Response } from "express";
 import PropertyUseCases from "../../application/property.usecases";
 import PropertyRepository from "./property.repository";
-import haversine from "haversine";
 
 class PropertyController {
 	private propertyUseCases: PropertyUseCases;
@@ -43,9 +42,7 @@ class PropertyController {
 			return next(result);
 		}
 
-		console.log(haversine(result[0].coordinates, result[1].coordinates));
-
-		return response.status(200).send(result);
+		return response.status(200).send({ items: result });
 	};
 }
 

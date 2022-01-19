@@ -1,11 +1,11 @@
-import Houmer from "./houmer";
 import Property from "./property";
 
 class Visit {
+	public _id: any;
 	private _property: Property;
 	private _start_date: Date;
 	private _end_date: Date;
-	private _houmer: Houmer;
+	private _houmer_id: string;
 
 	public get property(): Property {
 		return this._property;
@@ -31,12 +31,12 @@ class Visit {
 		this._end_date = end_date;
 	}
 
-	public get houmer(): Houmer {
-		return this._houmer;
+	public get houmer_id(): string {
+		return this._houmer_id;
 	}
 
-	public set houmer(houmer: Houmer) {
-		this._houmer = houmer;
+	public set houmer_id(houmer_id: string) {
+		this._houmer_id = houmer_id;
 	}
 }
 
