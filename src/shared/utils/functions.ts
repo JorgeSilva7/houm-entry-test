@@ -30,7 +30,7 @@ const paginationMetadata = async (
 	return response;
 };
 
-function millisToMinutesAndSeconds(millis) {
+const millisToMinutesAndSeconds = (millis) => {
 	const minutes = Math.floor(millis / 60000);
 	const seconds = Number(((millis % 60000) / 1000).toFixed(0));
 
@@ -43,7 +43,7 @@ function millisToMinutesAndSeconds(millis) {
 	}
 
 	return stringRes;
-}
+};
 
 const asyncForEach = async (array, callback) => {
 	for (let index = 0; index < array.length; index++) {

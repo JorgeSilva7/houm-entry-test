@@ -4,7 +4,7 @@
 
 const DB_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT;
-const SECRET_JWT = process.env.SECRET_JWT;
+const SECRET_JWT = process.env.SECRET_JWT || "SECRET_JWT";
 
 const SWAGGER_OPTIONS = {
 	definition: {

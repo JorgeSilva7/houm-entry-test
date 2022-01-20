@@ -5,6 +5,7 @@ import IPropertyRepository from "../domain/repository/iproperty.repository";
 import Visit from "../domain/visit";
 import DateValue from "../../shared/domain/DateValue";
 import haversine from "haversine";
+import moment from "moment";
 
 class VisitUseCases {
 	visitRepository: IVisitRepository;
@@ -44,7 +45,6 @@ class VisitUseCases {
 			}
 
 			if (alreadyVisit.length) {
-				console.log(alreadyVisit[0]);
 				return new ApiException(
 					403,
 					`Unauthorized: You has a pending visit (finish the visit '${alreadyVisit[0].property.name}' first)`
