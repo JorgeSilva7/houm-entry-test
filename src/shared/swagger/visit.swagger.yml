@@ -1,0 +1,129 @@
+Visit:
+  name: Visit
+  description: Visit endpoints
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Visit:
+      type: object
+      properties:
+        _id:
+          type: "ObjectId"
+        name:
+          type: "string"
+        lastName:
+          type: "string"
+        username:
+          type: "string"
+        password:
+          type: "string"
+
+/visits:
+  post:
+    tags:
+      - Visit
+    description: "Create new visit for the specific property for current logged houmer"
+    summary: "Create new visit"
+    security:
+      - BearerAuth: []
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    parameters:
+      - in: body
+        name: property
+        schema:
+          type: string
+          example: "61e711d77be4c2a126abd57a"
+        required: true
+        description: id of property
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              property:
+                type: "string"
+                example: "61e711d77be4c2a126abd57a"
+    responses:
+      "201":
+        description: Created
+      "401":
+        description: Token error
+      "400":
+        description: Bad request
+  get:
+    tags:
+      - Visit
+    description: "Get visits by logged houmer per day with visit duration or move speed"
+    summary: "Get visits for logged houmer with visit duration or move speed"
+    security:
+      - BearerAuth: []
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    parameters:
+      - in: query
+        name: day
+        required: true
+        description: "day to filter visits in format DD-MM-YYYY"
+        schema:
+          type: string
+          example: "19-01-2021"
+      - in: query
+        name: type
+        required: true
+        description: "type of query 'visit_duration' or 'move_speed'"
+        schema:
+          type: string
+          example: "visit_duration"
+      - in: query
+        name: min_speed
+        required: false
+        description: "min_speed to filter when type is 'move_speed'"
+        schema:
+          type: string
+          example: 10
+    responses:
+      "200":
+        description: List of visits
+      "401":
+        description: Token error
+
+/visits/{id}/end:
+  patch:
+    tags:
+      - Visit
+    description: "finish a visit per id with current date"
+    summary: "finish a visit per id"
+    security:
+      - BearerAuth: []
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    parameters:
+      - in: path
+        name: id
+        required: true
+        description: "id of visit to finish"
+        schema:
+          type: string
+          example: "61e8c8ec0b7df37472aacfe7"
+    responses:
+      "200":
+        description: Finished
+      "401":
+        description: Token error
+      "400":
+        description: Bad request or visit already ended
+      "404":
+        description: Visit not found

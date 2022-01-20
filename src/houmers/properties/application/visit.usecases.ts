@@ -5,7 +5,6 @@ import IPropertyRepository from "../domain/repository/iproperty.repository";
 import Visit from "../domain/visit";
 import DateValue from "../../shared/domain/DateValue";
 import haversine from "haversine";
-import moment from "moment";
 
 class VisitUseCases {
 	visitRepository: IVisitRepository;

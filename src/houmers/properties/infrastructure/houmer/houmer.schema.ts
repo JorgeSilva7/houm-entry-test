@@ -32,8 +32,8 @@ schema.pre("save", function (next) {
 		if (err) return next(err);
 
 		// hash the password using our new salt
-		bcrypt.hash(houmer.password, salt, function (err, hash) {
-			if (err) return next(err);
+		bcrypt.hash(houmer.password, salt, function (_err, hash) {
+			if (_err) return next(_err);
 
 			// override the cleartext password with the hashed one
 			houmer.password = hash;

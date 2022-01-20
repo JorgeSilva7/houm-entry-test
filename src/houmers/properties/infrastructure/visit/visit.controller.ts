@@ -42,7 +42,7 @@ class VisitController {
 		if (result instanceof Error) {
 			return next(result);
 		}
-		return response.status(201).send({ success: result });
+		return response.status(200).send({ success: result });
 	};
 
 	getByHoumer = async (
@@ -58,7 +58,7 @@ class VisitController {
 				request["houmer"],
 				query
 			);
-		} else if (query["type"] == "move_duration") {
+		} else if (query["type"] == "move_speed") {
 			result = await this.visitUseCase.getByHoumerWithMoveDuration(
 				request["houmer"],
 				query
@@ -67,7 +67,7 @@ class VisitController {
 			return next(
 				new ApiException(
 					400,
-					"The query 'type' is necessary and must be 'visit_duration' o 'move_duration'"
+					"The query 'type' is necessary and must be 'visit_duration' o 'move_speed'"
 				)
 			);
 		}
