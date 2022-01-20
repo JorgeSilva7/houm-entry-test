@@ -30,10 +30,30 @@ const paginationMetadata = async (
 	return response;
 };
 
+const millisToMinutesAndSeconds = (millis) => {
+	const minutes = Math.floor(millis / 60000);
+	const seconds = Number(((millis % 60000) / 1000).toFixed(0));
+
+	let stringRes = "";
+	if (minutes) {
+		stringRes = `${minutes} minutes and `;
+	}
+	if (seconds) {
+		stringRes += `${seconds < 10 ? "0" : ""}${seconds} seconds`;
+	}
+
+	return stringRes;
+};
+
 const asyncForEach = async (array, callback) => {
 	for (let index = 0; index < array.length; index++) {
 		await callback(array[index], index, array);
 	}
 };
 
-export { paginationOptions, paginationMetadata, asyncForEach };
+export {
+	paginationOptions,
+	paginationMetadata,
+	millisToMinutesAndSeconds,
+	asyncForEach,
+};

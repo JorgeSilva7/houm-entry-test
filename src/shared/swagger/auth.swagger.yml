@@ -1,0 +1,123 @@
+Auth:
+  name: Auth
+  description: Auth endpoints
+
+components:
+  schemas:
+    Houmer:
+      type: object
+      properties:
+        _id:
+          type: "ObjectId"
+        name:
+          type: "string"
+        lastName:
+          type: "string"
+        username:
+          type: "string"
+        password:
+          type: "string"
+
+/auth/login:
+  post:
+    tags:
+      - Auth
+    description: "Houmer login"
+    summary: "Houmer login"
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    parameters:
+      - in: body
+        name: username
+        schema:
+          type: string
+          example: "username"
+        required: true
+        description: username
+      - in: body
+        name: password
+        schema:
+          type: string
+          example: "password"
+        required: true
+        description: password
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              username:
+                type: "string"
+                example: "user"
+              password:
+                type: "string"
+                example: "pass123"
+    responses:
+      "200":
+        description: Logged
+
+/auth/register:
+  post:
+    tags:
+      - Auth
+    description: "Register new houmer"
+    summary: "Register"
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    parameters:
+      - in: body
+        name: name
+        schema:
+          type: string
+          example: "name"
+        required: true
+        description: name
+      - in: body
+        name: lastName
+        schema:
+          type: string
+          example: "lastName"
+        required: true
+        description: lastName
+      - in: body
+        name: username
+        schema:
+          type: string
+          example: "username"
+        required: true
+        description: username
+      - in: body
+        name: password
+        schema:
+          type: string
+          example: "password"
+        required: true
+        description: password
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: "string"
+                example: "user"
+              lastName:
+                type: "string"
+                example: "user"
+              username:
+                type: "string"
+                example: "user"
+              password:
+                type: "string"
+                example: "user123"
+    responses:
+      "201":
+        description: Created

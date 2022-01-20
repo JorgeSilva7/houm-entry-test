@@ -1,0 +1,99 @@
+Property:
+  name: Property
+  description: Property endpoints
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Property:
+      type: object
+      properties:
+        _id:
+          type: "ObjectId"
+        name:
+          type: "string"
+        lastName:
+          type: "string"
+        username:
+          type: "string"
+        password:
+          type: "string"
+
+/properties:
+  post:
+    tags:
+      - Property
+    description: "Create new property for the current logged houmer"
+    summary: "Create property"
+    security:
+      - BearerAuth: []
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    parameters:
+      - in: body
+        name: name
+        schema:
+          type: string
+          example: "name"
+        required: true
+        description: name of property
+      - in: body
+        name: coordinates
+        schema:
+          type: object
+          properties:
+            latitude:
+              type: number
+              example: -38.7288152829259
+            longitude:
+              type: number
+              example: -72.61304485137737
+        required: true
+        description: property coordinates (latitude and longitude)
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: "string"
+                example: "user"
+              coordinates:
+                type: "object"
+                properties:
+                  latitude:
+                    type: number
+                    example: -38.7288152829259
+                  longitude:
+                    type: number
+                    example: -72.61304485137737
+    responses:
+      "201":
+        description: Created
+      "401":
+        description: Token error
+      "400":
+        description: Bad request
+  get:
+    tags:
+      - Property
+    description: "Get properties for current logged houmer"
+    summary: "Get properties for logged houmer"
+    security:
+      - BearerAuth: []
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: List of properties
+      "401":
+        description: Token error

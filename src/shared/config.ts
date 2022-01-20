@@ -4,6 +4,7 @@
 
 const DB_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT;
+const SECRET_JWT = process.env.SECRET_JWT || "SECRET_JWT";
 
 const SWAGGER_OPTIONS = {
 	definition: {
@@ -26,4 +27,4 @@ const SWAGGER_OPTIONS = {
 	apis: ["./src/shared/swagger/*.swagger.yml"],
 };
 
-export { DB_URI, PORT, SWAGGER_OPTIONS };
+export { DB_URI, PORT, SWAGGER_OPTIONS, SECRET_JWT };

@@ -1,17 +1,17 @@
 import Coordinates from "../../shared/domain/Coordinates";
-import Name from "../../shared/domain/Name";
-import Houmer from "./houmer";
+import Alphanumeric from "../../shared/domain/Alphanumeric";
 
 class Property {
-	private _name: Name;
+	public _id: any;
+	private _name: Alphanumeric;
 	private _coordinates: Coordinates;
-	private _houmer: Houmer;
+	private _houmer_id: string;
 
-	public get name(): Name {
+	public get name(): Alphanumeric {
 		return this._name;
 	}
 
-	public set name(name: Name) {
+	public set name(name: Alphanumeric) {
 		this._name = name;
 	}
 
@@ -23,12 +23,12 @@ class Property {
 		this._coordinates = coordinates;
 	}
 
-	public get houmer(): Houmer {
-		return this._houmer;
+	public get houmer_id(): string {
+		return this._houmer_id;
 	}
 
-	public set houmer(houmer: Houmer) {
-		this._houmer = houmer;
+	public set houmer_id(houmer_id: string) {
+		this._houmer_id = houmer_id;
 	}
 }
 
