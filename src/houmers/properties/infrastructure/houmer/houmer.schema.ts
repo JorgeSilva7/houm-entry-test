@@ -44,4 +44,22 @@ schema.pre("save", function (next) {
 
 const Houmer = model("Houmer", schema);
 
+//Seed
+Houmer.create({
+	username: "test",
+	password: "test123_",
+	name: "Test",
+	lastName: "User",
+})
+	.then((res) => {
+		console.log(
+			"SEED HOUMER USER CREATED { username: test : password: test123_ }"
+		);
+	})
+	.catch((err) => {
+		console.log(
+			"SEED HOUMER USER ALREADY CREATED { username: test : password: test123_ }"
+		);
+	});
+
 export default Houmer;
