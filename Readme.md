@@ -22,6 +22,10 @@ npm i
 
 - docker-compose -f docker-compose.dev.yml up
 
+For production:
+docker build -f docker/prod.Dockerfile .
+
+docker run -p 5001:5001 <id_of_builded>
 ```
 
 ## Tests
